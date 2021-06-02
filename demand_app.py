@@ -93,7 +93,8 @@ def run_sarima():
 
     df_selected_product = df.loc[(df['ProductName_ID'] == select_productname) & (df['Point-of-Sale_ID'] == select_pointofsale)]
     df_selected_product = df_selected_product.set_index('date')
-    #df_selected_product.index = pd.to_datetime(df_selected_product.index)
+    df_selected_product.index = pd.to_datetime(df_selected_product.index)
+    df_selected_product = df_selected_product.sort_index()
     #edf2 = df_selected_product.drop(columns=['ProductName_ID','Point-of-Sale_ID'])
     edf2 = df_selected_product['2016-01-01':'2019-11-03'].resample('W').agg({"Sell-out units":'sum'})
     y = edf2['Sell-out units']
