@@ -20,7 +20,7 @@ st.write("---")
 
 #project_path = pathlib.Path(__file__).parent.absolute()
 
-df = pd.read_csv('demand_forecast_data.csv',index_col=0)
+df = pd.read_csv('demand_forecast_selected_data.csv',index_col=0)
 df['date'] = pd.to_datetime(df['date'])
 
 prodName = sorted(list(df['ProductName_ID'].unique()))
