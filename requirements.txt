@@ -85,4 +85,5 @@ wcwidth==0.2.5
 webencodings==0.5.1
 widgetsnbextension==3.5.1
 xgboost==1.4.2
+scikit-learn==0.24.2
 zipp==3.4.1
