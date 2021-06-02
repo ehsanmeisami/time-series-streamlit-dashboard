@@ -23,13 +23,19 @@ st.write("---")
 df = pd.read_csv('demand_forecast_selected_data.csv',index_col=0)
 df['date'] = pd.to_datetime(df['date'])
 
-prodName = sorted(list(df['ProductName_ID'].unique()))
 stores = sorted(list((df['Point-of-Sale_ID'].unique())))
 
-# selecting product number
-select_productname = st.sidebar.selectbox("Select a Product Number ID", (prodName))
+st.write("First, please select a Point-of-Sale. Based on the input the Product Number IDs will be updated.")
+
 # selecting point of sales
 select_pointofsale = st.sidebar.selectbox("Select a Point of Sales", (stores))
+
+POS_SELECTED = df.loc[df['Point-of-Sale_ID'] == select_pointofsale]
+prodName = sorted(list(POS_SELECTED['ProductName_ID'].unique()))
+# selecting product number
+select_productname = st.sidebar.selectbox("Select a Product Number ID", (prodName))
+
+
 # selecting model
 model_chosen = st.sidebar.selectbox("Choose a model",("SARIMA","XGBoost"))
 # selecting the weeks to predict
